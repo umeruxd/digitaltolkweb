@@ -32,7 +32,7 @@ const locationModule = {
 			let currentLocationInStorage = localStorage.getItem('location');
 			if (!currentLocationInStorage) {
 				fetch(
-					'http://api.ipstack.com/check?access_key=8b7a02c5dd6f7816ab9061e51d6255a5&format=1'
+					'https://api.ipstack.com/check?access_key=8b7a02c5dd6f7816ab9061e51d6255a5&format=1'
 				)
 					.then((res) => res.json())
 					.then((response) => {
