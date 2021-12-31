@@ -24,7 +24,7 @@ const initialTaskState = {
 	status: 'incomplete',
 	title: '',
 };
-const taskData = ref(initialTaskState);
+const taskData = ref({ ...initialTaskState });
 const showModal = ref(false);
 const store = useStore();
 
@@ -51,7 +51,7 @@ const toggleModal = (e) => {
 		body.classList.remove('modal-open');
 		showModal.value = false;
 		date.value = new Date();
-		taskData.value = initialTaskState;
+		taskData.value = { ...initialTaskState };
 		emit('closeModal');
 	} else {
 		body.classList.add('modal-open');
@@ -60,7 +60,7 @@ const toggleModal = (e) => {
 };
 
 const handleTask = (e) => {
-	if (props.task) {
+	if (props.task && props.task.due_at) {
 		store.dispatch(UPDATE_TASK, taskData.value).then(() => {
 			toggleModal('form-submission');
 			emit('request', 'updateTask');
