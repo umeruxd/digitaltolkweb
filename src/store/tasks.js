@@ -26,15 +26,15 @@ const tasksModule = {
 	mutations: {
 		[SET_TASKS](state, tasks) {
 			state.tasks = tasks;
-			state.completedTasks = tasks.filter(
-				(task) => task.status === 'completed'
-			);
-			state.incompleteTasks = tasks.filter(
-				(task) => task.status === 'incomplete'
-			);
-			state.inprogressTasks = tasks.filter(
-				(task) => task.status === 'inprogress'
-			);
+			state.completedTasks = tasks
+				.filter((task) => task.status === 'completed')
+				.reverse();
+			state.incompleteTasks = tasks
+				.filter((task) => task.status === 'incomplete')
+				.reverse();
+			state.inprogressTasks = tasks
+				.filter((task) => task.status === 'inprogress')
+				.reverse();
 		},
 	},
 
