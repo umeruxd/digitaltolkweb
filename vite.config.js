@@ -4,6 +4,11 @@ import path from 'path';
 
 export default defineConfig({
 	plugins: [vue()],
+	configureWebpack: {
+		devServer: {
+			historyApiFallback: true,
+		},
+	},
 	css: { preprocessorOptions: { scss: { charset: false } } },
 	resolve: {
 		alias: {
