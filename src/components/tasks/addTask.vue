@@ -50,6 +50,7 @@ const toggleModal = (e) => {
 		if (typeof e !== 'string') e.stopPropagation();
 		body.classList.remove('modal-open');
 		showModal.value = false;
+		date.value = new Date();
 		taskData.value = initialTaskState;
 		emit('closeModal');
 	} else {
@@ -156,7 +157,12 @@ const schema = yup.object({
 											/>
 										</template>
 									</DatePicker>
-									<Field type="hidden" v-model="taskData.due_at" name="date" />
+									<Field
+										type="hidden"
+										v-if="showModal"
+										v-model="taskData.due_at"
+										name="date"
+									/>
 									<ErrorMessage v-if="hasSubmitTriggered" name="date" />
 								</div>
 								<div class="task-footer">
