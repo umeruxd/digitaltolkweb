@@ -31,9 +31,7 @@ const locationModule = {
 		[GET_LOCATION]({ commit }) {
 			let currentLocationInStorage = localStorage.getItem('location');
 			if (!currentLocationInStorage) {
-				fetch(
-					'https://api.ipstack.com/check?access_key=8b7a02c5dd6f7816ab9061e51d6255a5&format=1'
-				)
+				fetch('https://ipinfo.io/json?token=ab482e4afeb953')
 					.then((res) => res.json())
 					.then((response) => {
 						commit(SET_LOCATION, response);
@@ -67,9 +65,9 @@ const locationModule = {
 	mutations: {
 		[SET_LOCATION](state, location) {
 			let currentLocation = {
-				address: `${location.city} ${location.region_name}, ${location.country_name} ${location.zip}`,
-				latitude: location.latitude,
-				longitude: location.longitude,
+				address: `${location.city} ${location.region}, ${location.country} ${location.postal}`,
+				latitude: location.loc.split(',')[0],
+				longitude: location.loc.split(',')[1],
 			};
 			state.currentLocation = currentLocation;
 			localStorage.setItem('location', JSON.stringify(currentLocation));
