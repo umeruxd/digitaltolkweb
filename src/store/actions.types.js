@@ -1,0 +1,15 @@
+export const LOGIN = 'login';
+export const LOGOUT = 'logout';
+export const GET_TOKEN = 'fetchAccessToken';
+export const SET_TOKEN = 'setAccessToken';
+export const GET_LOCATION = 'getLocation';
+export const CHECK_IN = 'checkIn';
+export const GET_LOCATIONS = 'getLocations';
+export const STORE_LOCATION = 'storeLocation';
+export const DELETE_CHECKIN = 'deleteLocation';
+export const SHOW_TOAST = 'showToast';
+export const HIDE_TOAST = 'hideToast';
+export const GET_TASKS = 'getTasks';
+export const CREATE_TASK = 'createTasks';
+export const UPDATE_TASK = 'updateTasks';
+export const DELETE_TASK = 'deleteTasks';

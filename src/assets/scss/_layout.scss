@@ -1,0 +1,163 @@
+.sidebar {
+    width: 250px;
+    padding: 2.75rem 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+
+            a {
+                display: flex;
+                align-items: center;
+                padding: 1rem 1rem 1rem 3rem;
+
+                &:hover {
+                    color: rgba($primary, 0.8);
+                }
+
+                &.router-link-active {
+                    background-color: $primary;
+                    color: #FFF;
+                    border-radius: 0 50px 50px 0;
+
+                    .sidebar-icon {
+                        path {
+                            fill: #FFF;
+                        }
+                    }
+                }
+
+                .logout-title {
+                    font-weight: 500;
+                }
+            }
+
+            .sidebar {
+                &-title {
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                &-icon {
+                    margin-right: 1.5rem;
+
+                    path {
+                        fill: $primary;
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+.app-wrapper .main {
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    padding: 2.75rem 1rem 2.75rem 95px;
+}
+
+.location {
+    &-icon {
+        width: 1.5rem;
+    }
+
+    &-address {
+        font-weight: 500;
+
+        .lat-long {
+            font-size: 14px;
+            color: $light-gray-1;
+        }
+    }
+
+}
+
+.current-location,
+.check-in {
+    margin-bottom: 2rem;
+}
+
+
+.action {
+    &-delete {
+        width: 18px;
+
+        path {
+            fill: $danger
+        }
+    }
+}
+
+.form-check {
+    padding-left: 36px;
+
+    .form-check-input {
+        margin-left: -36px;
+        width: 24px;
+        height: 24px;
+        margin-top: 0;
+        border-width: 2px;
+        border-color: $light-gray-2;
+        border-radius: 6px;
+
+        &:checked[type=checkbox] {
+            // background-color: ;
+            background-image: url(src/assets/images/check.svg), linear-gradient(180deg, $light-gray-6 0%, $light-gray-4 100%);
+        }
+
+        &:focus {
+            border-color: $light-gray-2;
+            box-shadow: 0 0 0 0.25rem $light-gray-6;
+        }
+    }
+}
+
+
+.modal {
+    &-backdrop {
+        background-color: rgba($primary, 0.4);
+    }
+}
+
+.tasks-wrapper {
+    max-height: 100vh;
+    overflow-y: auto;
+    margin-bottom: 2rem;
+}
+
+.task-done {
+    border-left: 1px solid;
+    margin-top: 4px;
+    height: 20px;
+    // border-radius: 20px;
+    font-size: 12px;
+    padding: 1px 8px 0 8px;
+
+    svg {
+        width: 16px;
+        vertical-align: top;
+
+        path {
+            fill: $success;
+        }
+
+    }
+}
+
+
+.task-delete {
+    svg {
+        width: 16px;
+
+        path {
+            fill: $danger;
+        }
+    }
+}
