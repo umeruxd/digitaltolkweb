@@ -30,7 +30,6 @@ export default defineComponent({
 	components: { Delete },
 	methods: {
 		deleteCheckin() {
-			console.log(this.location);
 			this.$store.dispatch(DELETE_CHECKIN, this.location.id);
 		},
 	},

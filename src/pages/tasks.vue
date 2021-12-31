@@ -26,7 +26,6 @@ const handleCloseModal = (data) => {
 	editTasks.value = {};
 };
 const handleRequestNotification = (type) => {
-	console.log(type, 'type');
 	let taskType = 'created';
 	if (type === 'updateTask') taskType = 'updated';
 	else if (type === 'deleteTask') taskType = 'deleted';
@@ -35,7 +34,7 @@ const handleRequestNotification = (type) => {
 	else if (type === 'inprogress') taskType = 'moved to inprogress list';
 
 	store.dispatch(SHOW_TOAST, {
-		duration: 50,
+		duration: 5,
 		toastHeading: 'Tasks Status',
 		toastCopy: `The task has been ${taskType} successfully`,
 		icon: TimeIcon,

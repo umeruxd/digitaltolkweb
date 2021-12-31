@@ -21,7 +21,8 @@
 				</div>
 				<div class="toast-footer d-flex justify-content-end">
 					<span
-						class="toast-close"
+						class="toast-close cursor-pointer"
+						@click="triggerClose"
 						data-bs-dismiss="toast"
 						aria-label="Close"
 						>{{ toastData.closeText ? toastData.closeText : 'Close' }}</span
@@ -43,6 +44,7 @@
 <script>
 import defaultIcon from '@/assets/images/time.svg';
 import { mapGetters } from 'vuex';
+import { HIDE_TOAST } from '@/store/actions.types';
 
 export default {
 	data: () => ({
@@ -50,6 +52,12 @@ export default {
 	}),
 	computed: {
 		...mapGetters(['toastData', 'showToast']),
+	},
+	methods: {
+		triggerClose() {
+			this.$store.dispatch(HIDE_TOAST);
+			this.$emit('', false);
+		},
 	},
 };
 </script>

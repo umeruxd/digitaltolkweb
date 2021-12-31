@@ -21,7 +21,6 @@ const tasksModule = {
 
 	actions: {
 		[SHOW_TOAST]({ commit, dispatch }, payload) {
-			console.log('SHOW_TOAST');
 			commit(SET_TOAST_DATA, payload);
 			if (payload.duration) {
 				setTimeout(() => {
