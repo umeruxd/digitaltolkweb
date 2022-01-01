@@ -28,7 +28,7 @@ const swipeSideBar = () => {
 		class="sidebar vh-100 d-flex flex-column justify-content-between"
 		:class="{ 'show-nav': showNav }"
 	>
-		<div class="toggle-mobile-nav" @click="swipeSideBar">
+		<div class="toggle-mobile-nav d-md-block d-lg-none" @click="swipeSideBar">
 			<img width="26" :src="showNav ? closeIcon : barsIcon" alt="" />
 		</div>
 		<ul class="navigation">
