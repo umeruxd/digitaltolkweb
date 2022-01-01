@@ -4,8 +4,12 @@ import { LOGOUT } from '@/store/actions.types';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import Logout from '@/components/icons/Logout.vue';
+import closeIcon from '@/assets/images/close.svg';
+import barsIcon from '@/assets/images/bars.svg';
+import { ref } from '@vue/reactivity';
 const store = useStore();
 const router = useRouter();
+const showNav = ref(false);
 const logoutHandler = () => {
 	store.dispatch(LOGOUT).then((response) => {
 		if (response) {
@@ -13,10 +17,20 @@ const logoutHandler = () => {
 		}
 	});
 };
+const swipeSideBar = () => {
+	showNav.value = !showNav.value;
+};
 </script>
 
 <template>
-	<div class="sidebar vh-100 d-flex flex-column justify-content-between">
+	<div
+		id="sidebar"
+		class="sidebar vh-100 d-flex flex-column justify-content-between"
+		:class="{ 'show-nav': showNav }"
+	>
+		<div class="toggle-mobile-nav" @click="swipeSideBar">
+			<img width="26" :src="showNav ? closeIcon : barsIcon" alt="" />
+		</div>
 		<ul class="navigation">
 			<li v-for="link of sidebarLinks" :key="link.id">
 				<router-link :to="link.slug">
@@ -28,15 +42,15 @@ const logoutHandler = () => {
 		<ul>
 			<li>
 				<a href="" @click.prevent="logoutHandler">
-					<Logout class="logout-icon me-3" />
-					<span class="logout-title">Logout</span>
+					<Logout class="logout-icon" />
+					<span class="logout-title ms-3">Logout</span>
 				</a>
 			</li>
 		</ul>
 	</div>
 </template>
-<style type="text/css">
-.st0 {
+<style>
+.logout-icon .st0 {
 	fill: none;
 	stroke: #000000;
 	stroke-width: 2;

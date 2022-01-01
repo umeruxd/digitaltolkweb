@@ -52,7 +52,7 @@ const handleRequestNotification = (type) => {
 		<div class="row">
 			<div class="col-lg-4">
 				<h3 class="text-gray fz-18 fw-bold">Incomplete</h3>
-				<div class="tasks-wrapper card p-4">
+				<div class="tasks-wrapper card p-lg-4 p-2">
 					<div
 						v-for="task of incompleteTasks"
 						:key="`tasks-${task.id}`"
@@ -68,7 +68,7 @@ const handleRequestNotification = (type) => {
 			</div>
 			<div class="col-lg-4">
 				<h3 class="text-gray fz-18 fw-bold">Inprogress</h3>
-				<div class="tasks-wrapper card p-4">
+				<div class="tasks-wrapper card p-lg-4 p-2">
 					<div
 						v-for="task of inprogressTasks"
 						:key="`tasks-${task.id}`"
@@ -84,7 +84,7 @@ const handleRequestNotification = (type) => {
 			</div>
 			<div class="col-lg-4">
 				<h3 class="text-gray fz-18 fw-bold">Completed</h3>
-				<div class="tasks-wrapper card p-4">
+				<div class="tasks-wrapper card p-lg-4 p-2">
 					<div
 						v-for="task of completedTasks"
 						:key="`tasks-${task.id}`"

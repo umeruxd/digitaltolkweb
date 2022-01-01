@@ -1,50 +1,50 @@
 <template>
-	<div class="toast-container position-fixed p-3 top-0 end-0">
-		<transition name="fade" mode="out-in">
-			<div
-				v-if="showToast"
-				class="toast show"
-				role="alert"
-				aria-live="assertive"
-				aria-atomic="true"
-			>
-				<div
-					class="toast-body d-flex justify-content-between align-items-center"
-				>
-					<div class="toast-body-text">
-						<div class="fw-bold">{{ toastData.toastHeading }}</div>
-						<span class="toast-copy">{{ toastData.toastCopy }}</span>
-					</div>
-					<div class="toast-body-icon">
-						<img :src="toastData.icon ? toastData.icon : defaultIcon" />
-					</div>
+	<div
+		class="toast-container position-fixed p-3 top-0 end-0"
+		id="toast"
+		ref="toast"
+	>
+		<div
+			class="toast show"
+			role="alert"
+			aria-live="assertive"
+			aria-atomic="true"
+		>
+			<div class="toast-body d-flex justify-content-between align-items-center">
+				<div class="toast-body-text">
+					<div class="fw-bold">{{ toastData.toastHeading }}</div>
+					<span class="toast-copy">{{ toastData.toastCopy }}</span>
 				</div>
-				<div class="toast-footer d-flex justify-content-end">
-					<span
-						class="toast-close cursor-pointer"
-						@click="triggerClose"
-						data-bs-dismiss="toast"
-						aria-label="Close"
-						>{{ toastData.closeText ? toastData.closeText : 'Close' }}</span
-					>
-					<span
-						v-if="toastData.callback"
-						@click="toastData.callback()"
-						class="toast-action"
-						aria-label="other"
-						>{{
-							toastData.callbackText ? toastData.callbackText : 'Action'
-						}}</span
-					>
+				<div class="toast-body-icon">
+					<img :src="toastData.icon ? toastData.icon : defaultIcon" />
 				</div>
 			</div>
-		</transition>
+			<div class="toast-footer d-flex justify-content-end">
+				<span
+					class="toast-close cursor-pointer"
+					@click="triggerClose"
+					data-bs-dismiss="toast"
+					aria-label="Close"
+					>{{ toastData.closeText ? toastData.closeText : 'Close' }}</span
+				>
+				<span
+					v-if="toastData.callback"
+					@click="toastData.callback()"
+					class="toast-action"
+					aria-label="other"
+					>{{
+						toastData.callbackText ? toastData.callbackText : 'Action'
+					}}</span
+				>
+			</div>
+		</div>
 	</div>
 </template>
 <script>
 import defaultIcon from '@/assets/images/time.svg';
 import { mapGetters } from 'vuex';
 import { HIDE_TOAST } from '@/store/actions.types';
+import { swipeHorizontal } from '@/helpers/swipe';
 
 export default {
 	data: () => ({
@@ -52,6 +52,14 @@ export default {
 	}),
 	computed: {
 		...mapGetters(['toastData', 'showToast']),
+	},
+	mounted() {
+		let vm = this;
+		swipeHorizontal(this.$refs.toast).then((swiped) => {
+			if (swiped === 'right') {
+				vm.triggerClose();
+			}
+		});
 	},
 	methods: {
 		triggerClose() {

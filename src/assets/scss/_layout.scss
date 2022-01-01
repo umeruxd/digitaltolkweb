@@ -4,6 +4,8 @@
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 99;
+    background-color: #FFF;
 
     ul {
         list-style: none;
@@ -159,5 +161,57 @@
         path {
             fill: $danger;
         }
+    }
+}
+
+
+
+@media (max-width: 991px) {
+    .sidebar {
+        box-shadow: 0 0 5px rgba($primary, 0.2);
+
+        &.show-nav {
+            padding-right: 0.5rem;
+        }
+    }
+
+    .sidebar:not(.show-nav) {
+        width: 50px;
+
+        ul li a {
+            padding-right: 0;
+            padding-left: 0.75rem;
+            overflow: hidden;
+
+            .logout-title {
+                display: none;
+            }
+
+        }
+    }
+
+    .app-wrapper .main {
+        width: 100%;
+        margin: 0;
+        padding-left: 66px;
+    }
+
+    .form-check .form-check-input {
+        width: 18px;
+        height: 18px;
+        margin-top: 4px;
+        margin-left: -24px;
+    }
+
+    .form-check {
+        padding-left: 24px;
+    }
+
+    .task-done {
+        font-size: 0;
+    }
+
+    .toggle-mobile-nav {
+        padding: 0 12px;
     }
 }
